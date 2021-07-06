@@ -2,9 +2,9 @@
 
 enum layer_number {
   _QWERTY = 0,
-  _COLEMAK,
-  _LOWER,
-  _RAISE,
+  _COLEMAK = 1,
+  _LOWER = 2,
+  _RAISE = 3,
   _ADJUST,
 };
 
@@ -129,25 +129,46 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   if (!is_keyboard_master())
     return OLED_ROTATION_180;  // flips the display 180 degrees if offhand
-  return rotation;
+  // return rotation;
+  return OLED_ROTATION_270;
 }
 
 // When you add source files to SRC in rules.mk, you can use functions.
-const char *read_layer_state(void);
+// const char *read_layer_state(void);
 const char *read_logo(void);
-void set_keylog(uint16_t keycode, keyrecord_t *record);
-const char *read_keylog(void);
-const char *read_keylogs(void);
+// void set_keylog(uint16_t keycode, keyrecord_t *record);
+// const char *read_keylog(void);
+// const char *read_keylogs(void);
 
 // const char *read_mode_icon(bool swap);
 // const char *read_host_led_state(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 
+void print_layer_state(void) {
+  oled_clear();
+  switch (get_highest_layer(default_layer_state)) {
+    case _QWERTY:
+      oled_write_ln_P(PSTR("qwert"), false);
+      break;
+    case _COLEMAK:
+      oled_write_ln_P(PSTR("cole "), false);
+    break;
+  }
+  switch (get_highest_layer(layer_state)) {
+    case _LOWER:
+      oled_write_ln_P(PSTR("lower"), false);
+      break;
+    case _RAISE:
+      oled_write_ln_P(PSTR("raise"), false);
+      break;
+  }
+}
+
 void oled_task_user(void) {
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
-    oled_write_ln(read_layer_state(), false);
+    print_layer_state();
     // oled_write_ln(read_keylog(), false);
     // oled_write_ln(read_keylogs(), false);
     //oled_write_ln(read_mode_icon(keymap_config.swap_lalt_lgui), false);
@@ -157,14 +178,15 @@ void oled_task_user(void) {
     oled_write(read_logo(), false);
   }
 }
+
 #endif // OLED_DRIVER_ENABLE
 
-bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-#ifdef OLED_DRIVER_ENABLE
-    set_keylog(keycode, record);
-#endif
-    // set_timelog();
-  }
-  return true;
-}
+// bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+//   if (record->event.pressed) {
+// #ifdef OLED_DRIVER_ENABLE
+//     set_keylog(keycode, record);
+// #endif
+//     // set_timelog();
+//   }
+//   return true;
+// }
