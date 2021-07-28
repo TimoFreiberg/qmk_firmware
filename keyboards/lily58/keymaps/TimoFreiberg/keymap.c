@@ -55,28 +55,28 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 /* LOWER
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |                    |  F7  |  F8  |  F9  | F10  | F11  | F12  |
+ * |      |  F1  |  F2  |  F3  |  F4  |  F5  |                    |  F6  |  F7  |  F8  |  F9  | F10  | F11  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      | PgUp |  Up  | PgDn |BackSp| Del  |                    |PrnScr|   7  |   8  |   9  |   =  |   +  |
+ * |      | PgUp |  Up  | PgDn |BackSp| Del  |                    |PrnScr|   7  |   8  |   9  |   =  | F12  |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      | Left | Down | Right| Enter| ESC  |-------.    ,-------| CAPS |   4  |   5  |   6  |   \  |   |  |
+ * |      | Left | Down | Right| Enter| ESC  |-------.    ,-------| CAPS |   4  |   5  |   6  |   =  |   \  |
  * |------+------+------+------+------+------|   [   |    |    ]  |------+------+------+------+------+------|
- * |      | Home |      | End |C-S-Tab|C-Tab |-------|    |-------| G-F1 |   1  |   2  |   3  |      |      |
+ * |      | Home |      | End |C-S-Tab|C-Tab |-------|    |-------| G-F1 |   1  |   2  |   3  |   +  |   |  |
  * `-----------------------------------------/       /     \      \-----------------------------------------'
  *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |   0  |  DEL | RGUI |
  *                   |      |      |      |/       /         \      \ |      |      |      |
  *                   `----------------------------'           '------''--------------------'
  */
 [_LOWER] = LAYOUT( \
-  KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                         KC_F7  , KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,\
-  _______, KC_PGUP, KC_UP,   KC_PGDN, KC_BSPC, KC_DEL,                        KC_PSCR, KC_7   , KC_8   , KC_9  ,  KC_EQL , KC_PLUS, \
-  _______, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ENT,  KC_ESC,                        KC_CAPS, KC_4   , KC_5   , KC_6  ,  KC_BSLS, KC_PIPE, \
-  _______, KC_HOME, XXXXXXX, KC_END ,C(S(KC_TAB)),C(KC_TAB),_______, _______, G(KC_F1), KC_1   , KC_2   , KC_3   , XXXXXXX, _______, \
+  _______, KC_F1  , KC_F2,   KC_F3,   KC_F4,   KC_F5,                         KC_F6  , KC_F7,   KC_F8,   KC_F9 ,  KC_F10,  KC_F11,\
+  _______, KC_PGUP, KC_UP,   KC_PGDN, KC_BSPC, KC_DEL,                        KC_PSCR, KC_7   , KC_8   , KC_9  ,  KC_EQL , KC_F12, \
+  _______, KC_LEFT, KC_DOWN, KC_RIGHT,KC_ENT,  KC_ESC,                        KC_CAPS, KC_4   , KC_5   , KC_6  ,  KC_EQL, KC_BSLS, \
+  _______, KC_HOME, XXXXXXX, KC_END ,C(S(KC_TAB)),C(KC_TAB),_______, _______, G(KC_F1), KC_1   , KC_2   , KC_3   , KC_PLUS, KC_PIPE, \
                              _______, _______, _______,     _______, _______,  KC_0  , KC_DEL , _______\
 ),
 /* RAISE
  * ,-----------------------------------------.                    ,-----------------------------------------.
- * | LOWER| RAISE|QWERTY|COLEMAK|     |      |                    |      |      |      |      |      |      |
+ * |      | LOWER| RAISE|QWERTY|COLEMAK|     |                    |      |      |      |      |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
  * |      |   !  |   @  |  {   |   }  |   &  |                    |  Ins | PgUp |  Up  | PgDn |      |      |
  * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  */
 
 [_RAISE] = LAYOUT( \
-  TO(_LOWER),TO(_RAISE),DF(_QWERTY),DF(_COLEMAK),_______,_______,               _______, _______, _______, _______, _______, _______, \
+  _______,TO(_LOWER),TO(_RAISE),DF(_QWERTY),DF(_COLEMAK),_______,               _______, _______, _______, _______, _______, _______, \
   _______, KC_EXLM, KC_AT,   KC_LCBR, KC_RCBR, KC_AMPR,                     KC_INS , KC_PGUP, KC_UP,   KC_PGDN, XXXXXXX, _______, \
   _______, KC_HASH, KC_DLR,  KC_LPRN, KC_RPRN, KC_ASTR,                     XXXXXXX, KC_LEFT, KC_DOWN, KC_RGHT, XXXXXXX, XXXXXXX, \
   _______, KC_PERC, KC_CIRC, KC_LBRC, KC_RBRC, XXXXXXX,  _______, _______,  XXXXXXX, KC_HOME, XXXXXXX, KC_END , XXXXXXX, XXXXXXX, \
