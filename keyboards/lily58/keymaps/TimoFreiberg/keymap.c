@@ -133,6 +133,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_270;
 }
 
+// uint16_t oled_timer;
+
 // When you add source files to SRC in rules.mk, you can use functions.
 // const char *read_layer_state(void);
 const char *read_logo(void);
@@ -165,7 +167,20 @@ void print_layer_state(void) {
   }
 }
 
+// bool process_record_keymap(uint16_t keycode, keyrecord_t *record) {
+//   if (record->event.pressed) {
+//     oled_timer = timer_read();
+//   }
+//   return true;
+// }
+
 void oled_task_user(void) {
+  // if (timer_elapsed(oled_timer) > OLED_TIMEOUT) {
+  //   oled_off();
+  //   return;
+  // } else {
+  //   oled_on();
+  // }
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
     print_layer_state();
