@@ -45,6 +45,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define OLED_FADE_OUT
 #define OLED_FADE_OUT_INTERVAL 5
 
+#define DEBOUNCING_DELAY 5
+
 // Underglow
 /*
 #undef RGBLED_NUM
